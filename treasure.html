@@ -68,6 +68,7 @@
         <div class="col-sm" ><img id="24" onclick="check(id)" src="TreasureChest.jpg" alt="TresureChest" width="150" height="150" /></div>
     </div>
     </div>
+    
 
     <script>
         let ids=new Array();
@@ -79,21 +80,23 @@
         let score=0;
         let lastCheck=12;
         let treasureLocation =18;
-        function check(x)
+        function check(position)
         {
-            var a=parseInt(x);            
+            var a=parseInt(position);            
             if(a===treasureLocation)
             {
-                document.getElementById(x).src="Treasure.jpg"
-                score++;
+                document.getElementById(position).src="Treasure.jpg"
+               
             }
             else{
-                document.getElementById(x).src="EmptyTreasure.jpg"
-                chestCount++
+                document.getElementById(position).src="EmptyTreasure.jpg"
+                
             }
+            score++;
+            chestCount++
             lastCheck=a;
-           document.getElementById("chests").innerHTML="Number of chests checked is zero "+chestCount;
-           document.getElementById("score").innerHTML="Score is unknown "+score;
+           document.getElementById("chests").innerHTML="Number of chests checked is : "+chestCount;
+           document.getElementById("score").innerHTML="Score is : "+score;
 
             
         }
@@ -103,6 +106,8 @@
              rem=lastCheck%5;
              div=lastCheck/5;
              i=treasureLocation;
+             score+=2;
+             document.getElementById("score").innerHTML="Score is  "+score;
                 if(i%5===rem)
                 {
                         if(i<lastCheck)
@@ -148,8 +153,9 @@
                     
                 }
              
-                document.getElementById("help").innerHTML="Help report "+hlp
+                document.getElementById("help").innerHTML="Help report: "+hlp
         }
+        
     </script>
 
             </body>

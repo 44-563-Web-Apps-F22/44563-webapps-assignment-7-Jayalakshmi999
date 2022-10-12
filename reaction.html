@@ -11,19 +11,19 @@
 </head>
 <body>
 
-  <h2>Jaya Lakshmi Medikonda </h2>
+  <h2>Jaya Lakshmi Medikonda reaction timer </h2>
 
   <button type="button"
   class="btn btn-primary"
-  onclick="buttonPress2()">
+  onclick="startTime()">
   Start Timer</button>
   <button type="button"
   class="btn btn-primary"
   onclick="recordReact()">
   React Now</button>
   
-  <div id="target">Your time</div>
-  <div id="countdown">Count</div>
+  <div id="target" style="color: rgb(82, 82, 255);">Your time</div>
+  <div id="countdown" style="color: rgb(82, 82, 255);">Count</div>
   
   <script> 
   let myTime;
@@ -32,11 +32,25 @@
     console.log(myTime)
   }
 
-  function buttonPress2() {
+  function startTime() {
+    myTime=undefined
+    for(i=4;i>0;i--)
+    {
+      setTimeout(()=>{
+      document.getElementById('countdown').innerHTML = "Count "+i
+    }, (3-i)*1000)
+    }
     setTimeout(()=>{
-      document.getElementById('target').style.color = "red"
-    }, 3000)
-  }
+      if(myTime===undefined)
+      {
+        document.getElementById('target').innerHTML = "Your time "+"Too Slow"
+      }
+      else{
+        buttonTime=Date.now();
+        document.getElementById('target').innerHTML = "Time was "+(buttonTime-myTime)
+      }
+    },3000)
+      }
   </script>
 
 </body>
